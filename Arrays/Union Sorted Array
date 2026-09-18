@@ -1,0 +1,73 @@
+import java.lang.*;
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+      Scanner scan=new Scanner(System.in);
+      System.out.println("Enter the size");
+      int n1=scan.nextInt();
+      System.out.println("Enter the elements");
+      int[] nums1=new int[n1];
+        for(int i=0;i<n1;i++)
+      {
+          nums1[i]=scan.nextInt();
+      }
+      System.out.println("Enter the size");
+      int n2=scan.nextInt();
+      System.out.println("Enter the elements");
+      int[] nums2=new int[n2];
+      for(int i=0;i<n2;i++)
+      {
+          nums2[i]=scan.nextInt();
+      }
+      int n3=n1+n2;
+      int[] nums3=new int[n3];
+      findMissing(nums1,n1,nums2,n2,nums3,n3);
+      
+    }
+    public static void findMissing(int[] nums1,int n1,int[] nums2,int n2, int[] nums3, int n3)
+    {
+       int i=0,j=0,k=0;
+       int temp1=n1,temp2=n2,temp=n3;
+       while(n1>0 && n2>0)
+       {
+           if(nums1[i]>nums2[j])
+           {
+              nums3[k++]=nums2[j++]; 
+              n2--;
+           }
+           else if(nums1[i]<nums2[j])
+           {
+                nums3[k++]=nums1[i++]; 
+                n1--;
+           }
+           else{
+               nums3[k++]=nums1[i++];
+               j++;
+               n1--;
+               n2--;
+           }
+       }
+       int temp4=k;
+       if(n2==0)
+       {
+           for(int a=temp4;a<temp4+n1;a++)
+           {
+               nums3[k++]=nums1[i++];
+           }
+       }
+       else{
+           
+           for(int a=temp4;a<temp4+n2;a++)
+           {
+               nums3[k++]=nums2[j++];
+           }
+       
+       }
+       for(int l=0;l<k;l++)
+       {
+           System.out.println(nums3[l]);
+       }
+           
+    }
+}

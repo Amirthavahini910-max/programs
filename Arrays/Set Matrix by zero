@@ -1,0 +1,58 @@
+import java.lang.*;
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+    Scanner scan=new Scanner(System.in);
+    System.out.println("Enter the row size");
+    int r=scan.nextInt();
+    System.out.println("Enter the col size");
+    int c=scan.nextInt();
+    System.out.println("Enter the elements");
+    int[][] nums=new int[r][c];
+    for(int i=0;i<r;i++)
+    {
+    for(int j=0;j<c;j++) 
+    {
+        nums[i][j]=scan.nextInt();
+    }}
+    int[] row=new int[r];
+    int[] col=new int[c];
+    setZero(nums,r,c,row,col);
+    }
+    public static void setZero(int[][] nums,int r,int c,int[] row,int[] col)
+    {
+      for(int i=0;i<r;i++){
+          for(int j=0;j<c;j++)
+          {
+              if(nums[i][j]==0)
+              {
+                  row[i]=1;
+                  col[j]=1;
+              }
+          }
+      }
+      for(int i=0;i<r;i++)
+      {
+          for(int j=0;j<c;j++)
+          {
+              if(row[i]==1||col[j]==1)
+              {
+                  nums[i][j]=0;
+              }
+          }
+      }
+        for(int i=0;i<r;i++)
+      {
+          for(int j=0;j<c;j++)
+          {
+              System.out.print(nums[i][j]+" ");
+          }
+           System.out.println("");
+      }
+       
+        
+    }
+}
+
+

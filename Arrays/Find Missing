@@ -1,0 +1,33 @@
+import java.lang.*;
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+      Scanner scan=new Scanner(System.in);
+      System.out.println("Enter the size");
+      int n=scan.nextInt();
+      System.out.println("Enter the elements");
+      int[] nums=new int[n];
+      for(int i=0;i<n;i++)
+      {
+          nums[i]=scan.nextInt();
+      }
+      findMissing(nums,n);
+      
+    }
+    public static void findMissing(int[] nums,int n)
+    {
+        int temp;
+        temp=(n*(n+1));
+        temp=temp/2;
+        System.out.println(temp);
+        int sum=0;
+        for(int i=0;i<n;i++)
+        {
+            sum+=nums[i];
+        }
+         System.out.println(sum);
+         sum=temp-sum;
+         System.out.println(sum);
+    }
+}

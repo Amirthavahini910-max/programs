@@ -1,0 +1,59 @@
+import java.lang.*;
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+    Scanner scan=new Scanner(System.in);
+    System.out.println("Enter the size");
+    int n=scan.nextInt();
+     System.out.println("Enter elements:");
+    int[] nums=new int[n];
+    for(int i=0;i<n;i++)
+    {
+        nums[i]=scan.nextInt();
+    }
+    int[] nums2=new int[n];
+    rearrangeArrayBySign(nums,n,nums2);
+    }
+    public static void  rearrangeArrayBySign(int[] nums,int n,int[] nums2)
+    {
+        int j=0;
+        int mid=n/2;
+        int k=mid;
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]<0)
+            {
+                nums2[k++]=nums[i];
+            }
+            else{
+                  nums2[j++]=nums[i];
+            }
+        }
+         for(int i=0;i<n;i++)
+        {
+            System.out.println(nums2[i]+" ");
+        }
+        int flag=0;
+        k=mid;
+        j=0;
+        for(int i=0;i<n;i++)
+        {
+            if(flag==0)
+            {
+            flag=1;
+            nums[i]=nums2[j++];
+            }
+            else
+            {
+                flag=0;
+                nums[i]=nums2[k++];
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(nums[i]+" ");
+        }
+        
+    }
+}
